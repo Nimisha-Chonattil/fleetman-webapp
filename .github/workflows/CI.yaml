@@ -1,7 +1,7 @@
-name: Build
+name: Build and Sonar
 on: workflow_dispatch # manually triggering workflow
 jobs:
-  buildrun:
+  Buildrun:
     name: Build and Analyze
     runs-on: ubuntu-latest
     steps:
@@ -34,7 +34,7 @@ jobs:
       - name: uploading artifacts
         uses: actions/upload-artifact@v4
         with: 
-          name: 
+          name: fleetman-artifact
           path: target/*.war
       
 
