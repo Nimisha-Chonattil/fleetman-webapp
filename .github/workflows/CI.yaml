@@ -1,17 +1,19 @@
 name: Build
 on: workflow_dispatch # manually triggering workflow
 jobs:
-  Build Run:
+  buildrun:
     name: Build and Analyze
     runs-on: ubuntu-latest
-    steps: 
-      - name: Get code 
-        uses: actions/checkout@v4
-      - name: installing java 17
-        uses: actions/setup-java@v4
+    steps:
+      - name: Get Code
+        uses: actions/checkout@v3 
         with:
-          distribution: 'zulu' # See 'Supported distributions' for available options
-          java-version: '17'
+          fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
+      - name: Set up JDK 17
+        uses: actions/setup-java@v3
+        with:
+          java-version: 17
+          distribution: 'zulu' # Alternative distribution options are available.
       - name: Cache SonarCloud packages
         uses: actions/cache@v3
         with:
@@ -32,7 +34,7 @@ jobs:
       - name: uploading artifacts
         uses: actions/upload-artifact@v4
         with: 
-          name: my-new-app
+          name: 
           path: target/*.war
       
 
