@@ -1,5 +1,6 @@
 name: Build and Sonar
 on: workflow_dispatch # manually triggering workflow
+run_name: CI process
 jobs:
   Buildrun:
     name: Build and Analyze
