@@ -1,0 +1,21 @@
+name: Deployment 
+on: 
+  workflow_dispatch:
+  workflows: Build
+    types: completed
+
+jobs:
+  Deployment of Application:
+    name: Deploy using Tomcat
+    runs-on: ubuntu-latest
+    steps: 
+      - name: Download the build artifact from triggered workflow 
+        uses: actions/download-artifact@v3
+        with:
+          name: fleetman-artifact
+        
+      - run: |
+          ls
+          pwd
+      # -name: Deploy to Tomcat
+      #  run: mvn tomcat7:deploy
