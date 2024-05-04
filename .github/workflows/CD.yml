@@ -1,6 +1,5 @@
 name: Deployment 
 on: 
-  # workflow_dispatch:
 workflow_run: 
     workflows: build
     types: [completed]
@@ -18,5 +17,6 @@ jobs:
       - run: |
           ls
           pwd
-      # -name: Deploy to Tomcat
-      #  run: mvn tomcat7:deploy
+      - name: Deploy to Tomcat
+        run: curl -v -u ${{secrets.TOMCAT_USR}}:${{secrets.TOMCAT_PWD}} -T /home/runner/work/fleetman-webapp/fleetman-webapp/target/fleetman-0.0.1-SNAPSHOT.war http://13.211.116.171:8080/manager/text/deploy?path=/spring-hello-war
+      
