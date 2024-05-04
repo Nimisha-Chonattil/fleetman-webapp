@@ -1,8 +1,8 @@
 name: Deployment 
 on: 
-workflow_run: 
-    workflows: Build and Sonar
-    types: [completed]
+    workflow_run: 
+        workflows: Build and Sonar
+        types: [completed]
 
 jobs:
   Deploy:
