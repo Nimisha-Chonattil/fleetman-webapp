@@ -38,6 +38,10 @@ jobs:
         with: 
           name: fleetman-artifact
           path: target/*.war
+      - run: |
+          ls
+          pwd
+        
       
 
     
