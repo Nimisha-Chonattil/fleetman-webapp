@@ -41,6 +41,7 @@ jobs:
       - run: |
           ls
           cd target/
+          ls
           pwd
         
       
