@@ -43,6 +43,7 @@ jobs:
           cd target/
           ls
           mkdir fleetman
+          ls
           pwd
         
       
