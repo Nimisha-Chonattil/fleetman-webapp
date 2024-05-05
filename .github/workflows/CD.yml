@@ -13,7 +13,7 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: fleetman-artifact
-          path: target/fleetman/*.war
+          path: fleetman/*.war
         
       - run: |
           ls
