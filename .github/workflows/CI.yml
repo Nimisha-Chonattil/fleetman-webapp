@@ -45,9 +45,7 @@ jobs:
           mkdir fleetman
           ls
           pwd
-  Deploy: 
-     steps: 
-        - 
+
         
       
 
