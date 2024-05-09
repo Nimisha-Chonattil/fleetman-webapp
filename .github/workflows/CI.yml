@@ -2,9 +2,20 @@ name: Build and Sonar
 on: 
   workflow_dispatch: # manually triggering workflow
 run-name: CI Process
+    inputs: 
+      environment:
+        description: Environment to deploy
+        default: Dev
+        required: true
+        type: choice
+        options:
+          - Dev
+          - Test
+          - Prod
 
 jobs:
   Buildrun:
+    environment: ${{github.event.inputs.environment}}
     name: Build and Analyze
     runs-on: ubuntu-latest
     steps:
