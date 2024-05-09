@@ -1,7 +1,6 @@
 name: Build and Sonar
 on: 
   workflow_dispatch: # manually triggering workflow
-run-name: CI Process
     inputs: 
       environment:
         description: Environment to deploy
@@ -9,9 +8,9 @@ run-name: CI Process
         required: true
         type: choice
         options:
-          - Dev
-          - Test
-          - Prod
+            - Dev
+            - Test
+            - Prod
 
 jobs:
   Buildrun:
