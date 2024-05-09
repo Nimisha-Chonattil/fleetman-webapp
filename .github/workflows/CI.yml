@@ -1,5 +1,6 @@
 name: Build and Sonar
-on: workflow_dispatch # manually triggering workflow
+on: 
+  workflow_dispatch: # manually triggering workflow
 run-name: CI Process
 
 jobs:
