@@ -3,7 +3,7 @@ on:
   workflow_dispatch: # manually triggering workflow
     inputs: 
       environment:
-        description: Environment to deploy
+        description: Environment for deployment
         default: Dev
         required: true
         type: choice
@@ -14,7 +14,8 @@ on:
 
 jobs:
   Buildrun:
-    environment: ${{github.event.inputs.environment}}
+    # environment: ${{github.event.inputs.environment}}
+    environment: Dev
     name: Build and Analyze
     runs-on: ubuntu-latest
     steps:
