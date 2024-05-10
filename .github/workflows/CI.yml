@@ -14,8 +14,7 @@ on:
 
 jobs:
   Buildrun:
-    # environment: ${{github.event.inputs.environment}}
-    environment: Dev
+    environment: ${{github.event.inputs.environment}}
     name: Build and Analyze
     runs-on: ubuntu-latest
     steps:
