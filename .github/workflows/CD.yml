@@ -1,10 +1,6 @@
 name: Deployment 
 on: 
-    # workflow_run: 
-    #     workflows: Build and Sonar
-    #     types: [completed]
-
-    workflow_dispatch: # manually triggering workflow
+  workflow_dispatch: # manually triggering workflow
     inputs: 
       environment:
         description: Environment for deployment
@@ -15,6 +11,11 @@ on:
             - Dev
             - Test
             - Prod
+    # workflow_run: 
+    #     workflows: Build and Sonar
+    #     types: [completed]
+
+    
 jobs:
   Deploy:
     environment: ${{github.event.inputs.environment}}
