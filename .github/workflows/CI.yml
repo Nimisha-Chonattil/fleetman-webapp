@@ -40,10 +40,22 @@ jobs:
           key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
           restore-keys: ${{ runner.os }}-m2
       - name: Build and analyze
+        id: sonar
         env:
           # GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=Nimisha-Chonattil_fleetman-webapp -Dsonar.qualitygate.wait=true
+
+      - name: Summary
+        if: steps.sonar.outcome == 'failure'
+
+        run: echo "- SONAR :***FAIL***" >> $GITHUB_STEP_SUMMARY
+
+      - name: Summary
+        if: steps.sonar.outcome == 'success'
+        run: echo "- SONAR :***PASS***" >> $GITHUB_STEP_SUMMARY
+      
+      
       - name: uploading artifacts
         uses: actions/upload-artifact@v4
         with: 
