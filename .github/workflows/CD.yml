@@ -1,20 +1,39 @@
 name: Deployment 
 on: 
-    workflow_run: 
-        workflows: Build and Sonar
-        types: [completed]
+    # workflow_run: 
+    #     workflows: Build and Sonar
+    #     types: [completed]
 
+    workflow_dispatch: # manually triggering workflow
+    inputs: 
+      environment:
+        description: Environment for deployment
+        default: Dev
+        required: true
+        type: choice
+        options:
+            - Dev
+            - Test
+            - Prod
 jobs:
   Deploy:
+    environment: ${{github.event.inputs.environment}}
     name: Deploy using Tomcat
     runs-on: ubuntu-latest
     steps: 
-      - name: Download the build artifact from triggered workflow 
-        uses: dawidd6/action-download-artifact@v2
+      # - name: Download the build artifact from triggered workflow 
+      #   uses: dawidd6/action-download-artifact@v2
+      #   with:
+      #     run_id: ${{ github.event.workflow_run.id }}
+      #     path: ./fleetman
+      #     search_artifacts: true
+      - name: Download artifacts
+        uses: actions/download-artifact@v4
         with:
-          run_id: ${{ github.event.workflow_run.id }}
+          name: fleetman-artifact
+          run-id: ${{ github.event.workflow_run.id }}
           path: ./fleetman
-          search_artifacts: true
+          github-token: ${{ secrets.GITHUB_TOKEN }}
       - run: |
           ls
           cd fleetman/
