@@ -32,5 +32,5 @@ jobs:
           pwd
           
       - name: Deploy to Tomcat
-        run: curl -v -u ${{secrets.TOMCAT_USR}}:${{secrets.TOMCAT_PWD}} -T /home/runner/work/fleetman-webapp/fleetman-webapp/fleetman/*/*.war http://54.206.111.223:8080/manager/text/deploy?path=/fleetman-webapp-war  
+        run: curl -v -u ${{secrets.TOMCAT_USR}}:${{secrets.TOMCAT_PWD}} -T /home/runner/work/fleetman-webapp/fleetman-webapp/fleetman/*.war http://54.206.111.223:8080/manager/text/deploy?path=/fleetman-webapp-war  
       
