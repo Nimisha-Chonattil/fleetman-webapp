@@ -1,20 +1,8 @@
 name: Deployment 
 on: 
-  workflow_dispatch: # manually triggering workflow
-    inputs: 
-      environment:
-        description: Environment for deployment
-        default: Dev
-        required: true
-        type: choice
-        options:
-            - Dev
-            - Test
-            - Prod
-    # workflow_run: 
-    #     workflows: Build and Sonar
-    #     types: [completed]
-
+  workflow_run: 
+        workflows: Build and Sonar
+        types: [completed]
     
 jobs:
   Deploy:
