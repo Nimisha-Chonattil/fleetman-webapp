@@ -27,7 +27,6 @@ jobs:
           ls
           cd fleetman/
           ls
-          
           pwd
           
       - name: Deploy to Tomcat
